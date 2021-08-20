@@ -30,14 +30,12 @@ function fibonaci(n: number) {
 console.log("Tong cua day fibo la: " + fibonaci(5));*/
 
 function fibonaci1(n: number) {
-    if (n == 1) {
-        return 1;
-    }
-    if (n == 2) {
+    if (n == 1 || n == 2) {
         return 1;
     }
     return fibonaci1(n - 1) + fibonaci1(n - 2);
 }
+
 let sum = 0;
 let n = 5;
 for (let i = 1; i <= n; i++) {

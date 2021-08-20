@@ -1,0 +1,15 @@
+<div class="container">
+  <h1 class="text-primary">CALCULATOR</h1>
+  <label class="form-control text-primary">Number 1:
+    <input class="form-control" type="text" [(ngModel)]="num1" (change)="calculatorNumber()">
+  </label><br>
+  <label class="form-control text-primary">Number 2:
+    <input class="form-control" type="text" [(ngModel)]="num2" (change)="calculatorNumber()">
+  </label><br>
+
+  <label class="form-control text-danger"><h3>Sum: {{sum}}</h3></label><br>
+  <label class="form-control text-danger"><h3>subtraction: {{sub}}</h3></label><br>
+  <label class="form-control text-danger"><h3>multiplication: {{multi}}</h3></label><br>
+  <label class="form-control text-danger"><h3>division: {{division}}</h3></label>
+</div>
+

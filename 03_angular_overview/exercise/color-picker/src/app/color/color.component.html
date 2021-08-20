@@ -1,0 +1,12 @@
+<div class="container">
+  <h1 class="text-primary">COLOR</h1>
+  <label class="form-control text-primary">Choose color:
+    <select class="form-control text-primary" [(ngModel)]="color">
+      <option value="red">Red</option>
+      <option value="blue">Blue</option>
+      <option value="yellow">Yellow</option>
+      <option value="green">Green</option>
+    </select>
+  </label><br>
+  <label class="form-control" style="height: 200px" [style.background-color]="color"></label>
+</div>

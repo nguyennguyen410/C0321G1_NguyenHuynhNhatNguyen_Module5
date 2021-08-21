@@ -1,0 +1,56 @@
+<app-header></app-header>
+<div>
+  <div class="col-md-12">
+    <div align="center">
+      <caption>
+        <h2>Add New Contract Detail</h2>
+      </caption>
+      <form class="form font-weight-normal w-50" method="post">
+        <table class="table">
+          <tr>
+            <td>
+              <input class="form-control" type="hidden"/>
+            </td>
+          </tr>
+          <tr>
+            <th>Contract:</th>
+            <td>
+              <select class="form-control" id="contract" style="width: 300px">
+                <option></option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <th>Attach Service:</th>
+            <td>
+              <select class="form-control" id="attachService" style="width: 300px">
+                <option></option>
+              </select>
+              <label style="color: greenyellow" id="attachServiceCost"></label>
+            </td>
+          </tr>
+          <tr>
+            <th>Quantity:</th>
+            <td>
+              <input class="form-control" id="quantity" type="text"/>
+            </td>
+          </tr>
+          <tr>
+            <th>Total Money:</th>
+            <td>
+              <input class="form-control" id="totalMoney" type="text" readonly/>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td colspan="2">
+              <input class="btn btn-success" type="submit" value="Save"/>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

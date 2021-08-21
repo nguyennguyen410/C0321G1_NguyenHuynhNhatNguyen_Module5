@@ -13,3 +13,19 @@
   <label class="form-control text-danger"><h3>division: {{division}}</h3></label>
 </div>
 
+<div class="container mt-3">
+  <h1 class="text-primary">CALCULATOR 2 (Not use ngModel)</h1>
+  <label class="form-control text-primary">Number 1:
+    <input #number1 class="form-control" type="text">
+  </label><br>
+  <label class="form-control text-primary">Number 2:
+    <input #number2 class="form-control" type="text">
+  </label><br>
+  <button class="btn btn-primary" (click)="calculatorNumber2(number1.value, number2.value)">Calculator</button>
+
+  <label class="form-control text-danger"><h3>Sum: {{sum}}</h3></label><br>
+  <label class="form-control text-danger"><h3>subtraction: {{sub}}</h3></label><br>
+  <label class="form-control text-danger"><h3>multiplication: {{multi}}</h3></label><br>
+  <label class="form-control text-danger"><h3>division: {{division}}</h3></label>
+</div>
+

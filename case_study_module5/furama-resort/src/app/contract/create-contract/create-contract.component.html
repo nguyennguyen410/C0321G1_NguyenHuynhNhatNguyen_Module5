@@ -1,0 +1,76 @@
+<app-header></app-header>
+<div>
+  <div class="col-md-12">
+    <div align="center">
+      <caption>
+        <h2>Add New Contract</h2>
+      </caption>
+      <form class="form font-weight-normal w-50" method="post">
+        <table class="table" cellpadding="5">
+          <tr>
+            <th>Contract Id:</th>
+            <td>
+              <input class="form-control" type="text" name="contractId" id="contractId" />
+            </td>
+          </tr>
+          <tr>
+            <th>Contract Start Date:</th>
+            <td>
+              <input class="form-control" type="date" name="contractStartDate" id="contractStartDate" />
+            </td>
+          </tr>
+          <tr>
+            <th>Contract End Date:</th>
+            <td>
+              <input class="form-control" type="date" name="contractEndDate" id="contractEndDate" />
+            </td>
+          </tr>
+          <tr>
+            <th>Contract Deposit:</th>
+            <td>
+              <input class="form-control" type="text" name="contractDeposit" id="contractDeposit" />
+            </td>
+          </tr>
+          <!--<tr>
+              <th>Contract Total Money:</th>
+              <td>
+                  <input class="form-control" type="text" name="contractTotalMoney" id="contractTotalMoney" />
+              </td>
+          </tr>-->
+          <tr>
+            <th>Employee:</th>
+            <td>
+              <select class="form-control" style="width: 300px">
+                <option></option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <th>Customer:</th>
+            <td>
+              <select class="form-control" style="width: 300px">
+                <option></option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <th>Service:</th>
+            <td>
+              <select class="form-control" style="width: 300px">
+                <option></option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td colspan="2">
+              <input class="btn btn-success" type="submit" value="Save"/>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

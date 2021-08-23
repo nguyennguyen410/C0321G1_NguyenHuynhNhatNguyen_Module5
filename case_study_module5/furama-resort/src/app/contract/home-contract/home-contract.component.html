@@ -39,14 +39,14 @@
         </tr>
         </thead>
         <tbody>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+          <tr *ngFor="let contract of listContract, index as i">
+            <td>{{i + 1}}</td>
+            <td>{{contract.contractId}}</td>
+            <td>{{contract.contractStartDate}}</td>
+            <td>{{contract.contractEndDate}}</td>
+            <td>{{contract.contractTotalMoney}}</td>
+            <td>{{contract.customer}}</td>
+            <td>{{contract.service}}</td>
           </tr>
         </tbody>
       </table>

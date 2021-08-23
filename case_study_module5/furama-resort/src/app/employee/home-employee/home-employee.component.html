@@ -29,15 +29,15 @@
         </tr>
         </thead>
         <tbody>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+          <tr *ngFor="let employee of listEmployee, index as i">
+            <td>{{i + 1}}</td>
+            <td>{{employee.employeeId}}</td>
+            <td>{{employee.employeeName}}</td>
+            <td>{{employee.employeeBirthday}}</td>
+            <td>{{employee.employeeIdCard}}</td>
+            <td>{{employee.employeeAddress}}</td>
+            <td>{{employee.position}}</td>
+            <td>{{employee.division}}</td>
             <td>
               <a class="btn btn-warning">Edit</a>
             </td>

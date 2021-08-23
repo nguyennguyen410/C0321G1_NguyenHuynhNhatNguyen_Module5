@@ -30,17 +30,18 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-              <td></td>
-              <td></td>
-              <td></td>
-              <td></td>
+            <tr *ngFor="let customer of listCustomers,index as i ">
+              <td>{{i + 1}}</td>
+              <td>{{customer.customerId}}</td>
+              <td>{{customer.customerName}}</td>
+              <td>{{customer.customerBirthday}}</td>
               <!--<td th:text="${customer.customerBirthday}"></td>-->
-              <td></td>
-              <td></td>
+              <td *ngIf="customer.customerGender == 1">Male</td>
+              <td *ngIf="customer.customerGender == 0">Female</td>
+              <td>{{customer.customerIdCard}}</td>
               <!--<td th:text="${customer.customerPhone}"></td>
               <td th:text="${customer.customerEmail}"></td>-->
-              <td></td>
+              <td>{{customer.customerAddress}}</td>
               <td>
                 <a class="btn btn-warning">Edit</a>
               </td>
@@ -72,44 +73,44 @@
             </li>
           </ul>
         </nav>
-      <!-- Modal -->
-      <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-           aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Delete <input readonly
-                                                                           style="outline: none; border: none;"
-                                                                           type="text" id="userName"></h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+        <!-- Modal -->
+        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete <input readonly
+                                                                             style="outline: none; border: none;"
+                                                                             type="text" id="userName"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <form action="/deleteCustomer" method="get">
+                <input type="hidden" name="customerIdDelete" value="" id="customerIdDelete">
+                <div class="modal-body">
+                  Delete <span id="userName1"></span>, Are you sure?
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">Delete</button>
+                </div>
+              </form>
             </div>
-            <form action="/deleteCustomer" method="get">
-              <input type="hidden" name="customerIdDelete" value="" id="customerIdDelete">
-              <div class="modal-body">
-                Delete <span id="userName1"></span>, Are you sure?
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Delete</button>
-              </div>
-            </form>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-<script>
-  $(document).ready(function () {
-    $('.deleteButton').click(function () {
-      let id = $(this).next().val();
-      let name = $(this).next().next().val();
-      console.log(id + " " + name);
-      document.getElementById("userName1").innerText = name;
-      document.getElementById("customerIdDelete").value = id;
-    })
-  });
-</script>
-<app-footer></app-footer>
+  <script>
+    $(document).ready(function () {
+      $('.deleteButton').click(function () {
+        let id = $(this).next().val();
+        let name = $(this).next().next().val();
+        console.log(id + " " + name);
+        document.getElementById("userName1").innerText = name;
+        document.getElementById("customerIdDelete").value = id;
+      })
+    });
+  </script>
+  <app-footer></app-footer>

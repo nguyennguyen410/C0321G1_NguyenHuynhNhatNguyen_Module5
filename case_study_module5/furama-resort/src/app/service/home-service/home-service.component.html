@@ -27,14 +27,15 @@
         </tr>
         </thead>
         <tbody>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+        <tr *ngFor="let service of listService,index as i">
+          <td>{{i + 1}}</td>
+          <td>{{service.serviceId}}</td>
+          <td>{{service.serviceName}}</td>
+          <td>{{service.serviceArea}}</td>
+          <td>{{service.serviceCost}}</td>
+          <td>{{service.serviceMaxPeople}}</td>
+          <td>{{service.poolArea}}</td>
+          <td>{{service.numberOfFloor}}</td>
           <td>
             <a class="btn btn-warning">Edit</a>
           </td>
@@ -44,6 +45,7 @@
               Delete
             </button>
           </td>
+        </tr>
         </tbody>
       </table>
       <nav aria-label="Page navigation example">

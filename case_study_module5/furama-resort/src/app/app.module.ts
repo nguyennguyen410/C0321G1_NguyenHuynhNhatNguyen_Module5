@@ -19,6 +19,8 @@ import { EditServiceComponent } from './service/edit-service/edit-service.compon
 import { CreateContractComponent } from './contract/create-contract/create-contract.component';
 import { HomeContractComponent } from './contract/home-contract/home-contract.component';
 import { CreateContractDetailComponent } from './contract/create-contract-detail/create-contract-detail.component';
+import {NgxPaginationModule} from 'ngx-pagination';
+
 
 @NgModule({
   declarations: [
@@ -41,6 +43,7 @@ import { CreateContractDetailComponent } from './contract/create-contract-detail
     CreateContractDetailComponent
   ],
   imports: [
+    NgxPaginationModule,
     BrowserModule,
     AppRoutingModule
   ],

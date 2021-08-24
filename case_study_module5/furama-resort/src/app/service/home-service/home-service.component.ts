@@ -19,8 +19,7 @@ export class HomeServiceComponent implements OnInit {
       standardRoom: "Vip",
       descriptionOtherConvenience: "V-Vip",
       poolArea: 50,
-      numberOfFloor: 2,
-      contract: "HD-0001",
+      numberOfFloor: 2
     },
     {
       serviceId: "DV-0002",
@@ -33,10 +32,23 @@ export class HomeServiceComponent implements OnInit {
       standardRoom: "Vip",
       descriptionOtherConvenience: "V-Vip",
       poolArea: 50,
-      numberOfFloor: 2,
-      contract: "HD-0002",
+      numberOfFloor: 2
+    },
+    {
+      serviceId: "DV-0003",
+      serviceName: "House",
+      serviceArea: 150,
+      serviceCost: 300,
+      serviceMaxPeople: 10,
+      rentType: "Date",
+      serviceType: "House-1",
+      standardRoom: "Vip",
+      descriptionOtherConvenience: "V-Vip",
+      poolArea: 50,
+      numberOfFloor: 2
     }
   ];
+  p = 1;
   constructor() { }
 
   ngOnInit(): void {

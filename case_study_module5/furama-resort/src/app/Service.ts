@@ -10,5 +10,4 @@ export interface Service {
   descriptionOtherConvenience: string;
   poolArea: number;
   numberOfFloor: number;
-  contract: string;
 }

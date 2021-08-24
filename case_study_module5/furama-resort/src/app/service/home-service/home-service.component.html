@@ -27,7 +27,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let service of listService,index as i">
+        <tr *ngFor="let service of listService | paginate: { itemsPerPage: 2, currentPage: p },index as i">
           <td>{{i + 1}}</td>
           <td>{{service.serviceId}}</td>
           <td>{{service.serviceName}}</td>
@@ -48,7 +48,8 @@
         </tr>
         </tbody>
       </table>
-      <nav aria-label="Page navigation example">
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      <!--<nav aria-label="Page navigation example">
         <nav aria-label="...">
           <ul class="pagination">
             <li class="page-item disabled">
@@ -64,7 +65,7 @@
             </li>
           </ul>
         </nav>
-      </nav>
+      </nav>-->
 
       <!-- Modal -->
       <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"

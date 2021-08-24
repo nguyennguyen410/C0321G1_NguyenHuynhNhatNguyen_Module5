@@ -8,6 +8,7 @@ import {Customer} from '../../Customer';
 })
 export class HomeCustomerComponent implements OnInit {
   listCustomers = [];
+  p = 1;
 
   constructor() { }
 

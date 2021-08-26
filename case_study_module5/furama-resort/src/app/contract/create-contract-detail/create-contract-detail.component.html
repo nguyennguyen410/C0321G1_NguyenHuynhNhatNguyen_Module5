@@ -5,46 +5,67 @@
       <caption>
         <h2>Add New Contract Detail</h2>
       </caption>
-      <form class="form font-weight-normal w-50" method="post">
+      <form class="form font-weight-normal w-50" [formGroup]="createContractDetailForm">
         <table class="table">
           <tr>
+            <th>Contract Detail Id:</th>
             <td>
-              <input class="form-control" type="hidden"/>
+              <input class="form-control" formControlName="contractDetailId" type="text"/>
+              <p style="color: red" *ngIf="createContractDetailForm.controls.contractDetailId.hasError('required') &&
+      createContractDetailForm.controls.contractDetailId.dirty">
+                Input contractDetailId, please!
+              </p>
             </td>
           </tr>
           <tr>
             <th>Contract:</th>
             <td>
-              <select class="form-control" id="contract" style="width: 300px">
-                <option></option>
+              <select class="form-control" formControlName="contract" id="contract" style="width: 300px">
+                <option>1</option>
+                <option>2</option>
               </select>
+              <p style="color: red" *ngIf="createContractDetailForm.controls.contract.hasError('required') &&
+      createContractDetailForm.controls.contract.touched">
+                Choose contract, please!
+              </p>
             </td>
           </tr>
           <tr>
             <th>Attach Service:</th>
             <td>
-              <select class="form-control" id="attachService" style="width: 300px">
+              <select class="form-control" formControlName="attachService" id="attachService" style="width: 300px">
                 <option></option>
               </select>
-              <label style="color: greenyellow" id="attachServiceCost"></label>
+              <p style="color: red" *ngIf="createContractDetailForm.controls.attachService.hasError('required') &&
+      createContractDetailForm.controls.attachService.touched">
+                Choose attachService, please!
+              </p>
             </td>
           </tr>
           <tr>
             <th>Quantity:</th>
             <td>
-              <input class="form-control" id="quantity" type="text"/>
+              <input class="form-control" formControlName="quantity" id="quantity" type="text"/>
+              <p style="color: red" *ngIf="createContractDetailForm.controls.quantity.hasError('min') &&
+      createContractDetailForm.controls.quantity.dirty">
+                Input >0, please!
+              </p>
             </td>
           </tr>
           <tr>
             <th>Total Money:</th>
             <td>
-              <input class="form-control" id="totalMoney" type="text" readonly/>
+              <input class="form-control" id="totalMoney" type="text"/>
+              <p style="color: red" *ngIf="createContractDetailForm.controls.totalMoney.hasError('min') &&
+      createContractDetailForm.controls.totalMoney.dirty">
+                Input > 0, please!
+              </p>
             </td>
           </tr>
           <tr>
             <td></td>
             <td colspan="2">
-              <input class="btn btn-success" type="submit" value="Save"/>
+              <input class="btn btn-success" (click)="getContractDetail()" value="Save"/>
             </td>
           </tr>
         </table>

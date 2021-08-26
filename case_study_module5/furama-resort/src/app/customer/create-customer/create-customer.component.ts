@@ -8,6 +8,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 })
 export class CreateCustomerComponent implements OnInit {
   createCustomerForm: FormGroup;
+
   constructor() {
     this.createCustomerForm = new FormGroup({
       customerId: new FormControl('', [Validators.required,

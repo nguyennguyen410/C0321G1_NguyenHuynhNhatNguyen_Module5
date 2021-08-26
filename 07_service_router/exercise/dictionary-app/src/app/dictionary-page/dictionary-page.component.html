@@ -1,0 +1,11 @@
+<h1>List Words</h1>
+<table border="1">
+  <tr>
+    <th>STT</th>
+    <th>Word</th>
+  </tr>
+  <tr *ngFor="let dictionary of dictionarys">
+    <td>{{dictionary.id}}</td>
+    <td><a [routerLink]="['/dictionary-detail', dictionary.id]">{{dictionary.name}}</a></td>
+  </tr>
+</table>

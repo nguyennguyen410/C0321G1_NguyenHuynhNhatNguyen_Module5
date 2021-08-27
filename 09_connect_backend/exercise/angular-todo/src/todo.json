@@ -1,0 +1,19 @@
+{
+  "todoList": [
+    {
+      "id": 1,
+      "content": "IPhone 11",
+      "complete": false
+    },
+    {
+      "id": 2,
+      "content": "aaa",
+      "complete": false
+    },
+    {
+      "id": 3,
+      "content": "bbb",
+      "complete": false
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+<h1>Edit</h1>
+<form [formGroup]="todoForm" (ngSubmit)="submit()">
+  <table>
+    <tr>
+      <td>Id:</td>
+      <td><input type="number" formControlName="id" readonly></td>
+    </tr>
+    <tr>
+      <td>Content:</td>
+      <td><input type="text" formControlName="content"></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><input type="hidden" formControlName="complete" readonly></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><button class="btn btn-primary">Edit</button></td>
+    </tr>
+  </table>
+</form>

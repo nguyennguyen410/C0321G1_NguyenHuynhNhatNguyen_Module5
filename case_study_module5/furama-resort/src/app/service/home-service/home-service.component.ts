@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Service} from '../../Service';
+import {ServiceService} from '../../../service-resort/service-service/service.service';
 
 @Component({
   selector: 'app-home-service',
@@ -7,51 +8,15 @@ import {Service} from '../../Service';
   styleUrls: ['./home-service.component.css']
 })
 export class HomeServiceComponent implements OnInit {
-  listService: Service[] = [
-    {
-      serviceId: "DV-0001",
-      serviceName: "Villa",
-      serviceArea: 150,
-      serviceCost: 300,
-      serviceMaxPeople: 10,
-      rentType: "Date",
-      serviceType: "Villa-1",
-      standardRoom: "Vip",
-      descriptionOtherConvenience: "V-Vip",
-      poolArea: 50,
-      numberOfFloor: 2
-    },
-    {
-      serviceId: "DV-0002",
-      serviceName: "Villa",
-      serviceArea: 150,
-      serviceCost: 300,
-      serviceMaxPeople: 10,
-      rentType: "Date",
-      serviceType: "Villa-2",
-      standardRoom: "Vip",
-      descriptionOtherConvenience: "V-Vip",
-      poolArea: 50,
-      numberOfFloor: 2
-    },
-    {
-      serviceId: "DV-0003",
-      serviceName: "House",
-      serviceArea: 150,
-      serviceCost: 300,
-      serviceMaxPeople: 10,
-      rentType: "Date",
-      serviceType: "House-1",
-      standardRoom: "Vip",
-      descriptionOtherConvenience: "V-Vip",
-      poolArea: 50,
-      numberOfFloor: 2
-    }
-  ];
+  listService: Service[] = [];
   p = 1;
-  constructor() { }
+  constructor(private serviceService: ServiceService) { }
 
   ngOnInit(): void {
+    this.getAll();
   }
 
+  private getAll() {
+    this.listService = this.serviceService.getAll();
+  }
 }

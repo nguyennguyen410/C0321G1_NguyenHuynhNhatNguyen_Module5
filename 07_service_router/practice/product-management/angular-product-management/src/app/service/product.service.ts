@@ -45,19 +45,19 @@ export class ProductService {
 
 
   // @ts-ignore
-  findById(id:number): Product{
+  findById(id: number): Product{
     return this.products.find(product => product.id === id);
   }
 
   editProduct(product) {
-    this.products.find(proEdit => proEdit.id == product.id).id = product.id;
-    this.products.find(proEdit => proEdit.id == product.id).name = product.name;
-    this.products.find(proEdit => proEdit.id == product.id).price = product.price;
-    this.products.find(proEdit => proEdit.id == product.id).description = product.description;
+    this.products.find(proEdit => proEdit.id === product.id).id = product.id;
+    this.products.find(proEdit => proEdit.id === product.id).name = product.name;
+    this.products.find(proEdit => proEdit.id === product.id).price = product.price;
+    this.products.find(proEdit => proEdit.id === product.id).description = product.description;
   }
   productDelete: number;
   deleteProduct(id) {
-    this.productDelete = this.products.findIndex(elementProduct => elementProduct.id === id)
+    this.productDelete = this.products.findIndex(elementProduct => elementProduct.id === id);
     this.products.splice(this.productDelete, 1);
   }
 }

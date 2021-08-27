@@ -21,6 +21,7 @@ import { HomeContractComponent } from './contract/home-contract/home-contract.co
 import { CreateContractDetailComponent } from './contract/create-contract-detail/create-contract-detail.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {ReactiveFormsModule} from '@angular/forms';
+import { DeleteCustomerComponent } from './customer/delete-customer/delete-customer.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import {ReactiveFormsModule} from '@angular/forms';
     EditServiceComponent,
     CreateContractComponent,
     HomeContractComponent,
-    CreateContractDetailComponent
+    CreateContractDetailComponent,
+    DeleteCustomerComponent
   ],
     imports: [
         NgxPaginationModule,

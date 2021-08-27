@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Contract} from '../../Contract';
+import {ContractService} from '../../../service-resort/contract-service/contract.service';
 
 @Component({
   selector: 'app-home-contract',
@@ -8,46 +9,15 @@ import {Contract} from '../../Contract';
 })
 export class HomeContractComponent implements OnInit {
   p = 1;
-  listContract: Contract[] = [
-    {
-      contractId: "HD-0001",
-      contractStartDate: "2021/08/23",
-      contractEndDate: "2021/08/25",
-      contractDeposit: 100,
-      contractTotalMoney: 500,
-      employee: "Tran Van A",
-      customer: "Nguyen Van A",
-      service: "DV-0001",
-      contractDetails: "None",
-    },
-    {
-      contractId: "HD-0002",
-      contractStartDate: "2021/08/23",
-      contractEndDate: "2021/08/25",
-      contractDeposit: 100,
-      contractTotalMoney: 500,
-      employee: "Tran Van A",
-      customer: "Nguyen Van A",
-      service: "DV-0002",
-      contractDetails: "None",
-    },
-    {
-      contractId: "HD-0003",
-      contractStartDate: "2021/08/23",
-      contractEndDate: "2021/08/25",
-      contractDeposit: 100,
-      contractTotalMoney: 500,
-      employee: "Tran Van A",
-      customer: "Nguyen Van A",
-      service: "DV-0002",
-      contractDetails: "None",
-    }
-  ];
-
-  constructor() {
+  listContract: Contract[] = [];
+  constructor(private contractService: ContractService) {
   }
 
   ngOnInit(): void {
+    this.getAll();
   }
 
+  private getAll() {
+    this.listContract = this.contractService.getAll();
+  }
 }

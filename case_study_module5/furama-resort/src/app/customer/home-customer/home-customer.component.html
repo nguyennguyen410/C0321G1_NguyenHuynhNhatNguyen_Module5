@@ -1,12 +1,12 @@
-<app-header></app-header>
+
 <div>
   <div class="col-md-12" style="margin: 10px">
     <div align="center">
       <caption><h2>List of Customer</h2></caption>
       <div class="mb-2">
-        <a class="btn btn-primary d-inline-block mb-2" href="/createCustomer"
+        <a class="btn btn-primary d-inline-block mb-2" [routerLink]="'/customerCreate'"
            style="color: lightcyan; float: left; margin-top: 10px">Create Customer</a>
-        <a class="btn btn-primary d-inline-block mb-2" href="/customerUsingService"
+        <a class="btn btn-primary d-inline-block mb-2" [routerLink]="'/customerUsingService'"
            style="color: lightcyan; float: right; margin-top: 10px">Customer Using Service</a>
       </div>
       <div>
@@ -43,15 +43,17 @@
               <td th:text="${customer.customerEmail}"></td>-->
               <td>{{customer.customerAddress}}</td>
               <td>
-                <a class="btn btn-warning">Edit</a>
+                <a class="btn btn-warning" [routerLink]="['/customerEdit', customer.customerId]">Edit</a>
               </td>
               <td>
-                <button type="button" class="deleteButton btn btn-danger" data-toggle="modal"
+                <!--<button type="button" class="deleteButton btn btn-danger" data-toggle="modal"
                         data-target="#deleteModal">
                   Delete
-                </button>
+                </button>-->
+                <a class="btn btn-danger" [routerLink]="['/customerDelete', customer.customerId]">Delete</a>
               </td>
               <!--<td><a th:href="@{/blog/view/__${blog.id}__ }">View</a></td>-->
+
             </tr>
             </tbody>
           </table>
@@ -72,19 +74,20 @@
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <form action="/deleteCustomer" method="get">
-                <input type="hidden" name="customerIdDelete" value="" id="customerIdDelete">
-                <div class="modal-body">
-                  Delete <span id="userName1"></span>, Are you sure?
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="submit" class="btn btn-primary">Delete</button>
-                </div>
-              </form>
+              <!--<form action="/deleteCustomer" method="get">-->
+              <input type="hidden" name="customerIdDelete" value="" id="customerIdDelete">
+              <div class="modal-body">
+                Delete <span></span>, Are you sure?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <a class="btn btn-secondary" >Delete</a>
+              </div>
+              <!--</form>-->
             </div>
           </div>
         </div>
+
       </div>
     </div>
   </div>
@@ -100,4 +103,4 @@
       })
     });
   </script>-->
-  <app-footer></app-footer>
+

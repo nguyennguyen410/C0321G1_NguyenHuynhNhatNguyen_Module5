@@ -1,0 +1,50 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "IPhone 12",
+      "productType": 1,
+      "price": 2400000,
+      "description": "New"
+    },
+    {
+      "id": 2,
+      "name": "IPhone 11",
+      "productType": 1,
+      "price": 1560000,
+      "description": "Like new"
+    },
+    {
+      "id": 3,
+      "name": "IPhone X",
+      "productType": 1,
+      "price": 968000,
+      "description": "97%"
+    },
+    {
+      "id": 11,
+      "name": "11",
+      "productType": "4",
+      "price": 11,
+      "description": "11"
+    }
+  ],
+  "productType": [
+    {
+      "id": 1,
+      "name": "IPhone"
+    },
+    {
+      "id": 2,
+      "name": "Sam Sung"
+    },
+    {
+      "id": 3,
+      "name": "Xiaomi"
+    },
+    {
+      "id": 4,
+      "name": "Huawei"
+    }
+  ]
+}

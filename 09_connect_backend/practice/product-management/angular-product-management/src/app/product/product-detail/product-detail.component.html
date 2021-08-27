@@ -10,6 +10,12 @@
       <td><input type="text" formControlName="name"></td>
     </tr>
     <tr>
+      <td>Loai sản phẩm:</td>
+      <select formControlName="productType">
+        <option *ngFor="let i of productTypes" value="{{i.id}}">{{i.name}}</option>
+      </select>
+    </tr>
+    <tr>
       <td>Giá sản phẩm</td>
       <td><input type="number" formControlName="price"></td>
     </tr>

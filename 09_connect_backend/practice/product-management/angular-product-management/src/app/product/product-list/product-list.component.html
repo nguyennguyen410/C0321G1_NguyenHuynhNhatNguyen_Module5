@@ -1,8 +1,9 @@
 <h1>Danh sách sản phẩm</h1>
-<table>
+<table border="1">
   <tr>
     <td>STT</td>
     <td>Tên</td>
+    <td>Loai</td>
     <td>Giá</td>
     <td>Mô tả</td>
     <td>Edit</td>
@@ -11,6 +12,10 @@
   <tr *ngFor="let product of products; index as i">
     <td>{{i + 1}}</td>
     <td>{{product.name}}</td>
+    <td *ngIf="product.productType==1">IPhone</td>
+    <td *ngIf="product.productType==2">Sam Sung</td>
+    <td *ngIf="product.productType==3">Xiaomi</td>
+    <td *ngIf="product.productType==4">Huawei</td>
     <td>{{product.price}}</td>
     <td>{{product.description}}</td>
     <td><a [routerLink]="['/product-detail', product.id]">Edit</a></td>

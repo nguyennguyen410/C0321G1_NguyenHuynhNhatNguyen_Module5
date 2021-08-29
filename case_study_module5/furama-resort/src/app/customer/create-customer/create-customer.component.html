@@ -7,7 +7,8 @@
       </caption>
       <form class="form font-weight-normal w-50" [formGroup]="createCustomerForm">
         <table class="table" cellpadding="5">
-
+          <thead></thead>
+          <tbody>
           <tr>
             <th>Customer Id:</th>
             <td>
@@ -22,13 +23,11 @@
             </td>
           </tr>
           <tr>
-            <th>Customer Type Id:</th>
+            <th>Customer Type:</th>
             <td>
-              <select class="form-control" formControlName="customerType" style="width: 300px">
-                <option value="silver">silver</option>
-                <option value="gold">gold</option>
-                <option value="platinum">platinum</option>
-                <option value="diamond">diamond</option>
+              <select class="form-control custom-select" formControlName="customerType" style="width: 300px">
+                <option selected value="">--- Choose Type ----</option>
+                <option *ngFor="let i of listCustomerTypes" value="{{i.id}}">{{i.name}}</option>
               </select>
               <p style="color: red" *ngIf="createCustomerForm.controls.customerType.hasError('required') &&
       createCustomerForm.controls.customerType.touched">
@@ -59,10 +58,9 @@
           <tr>
             <th>Customer Gender:</th>
             <td>
-              <select class="form-control" formControlName="customerGender" style="width: 300px">
-                <option>Male</option>
-                <option>Female</option>
-                <option>Other</option>
+              <select class="form-control custom-select" formControlName="customerGender" style="width: 300px">
+                <option selected value="">--- Choose Gender ----</option>
+                <option *ngFor="let i of listGenders" value="{{i.id}}">{{i.name}}</option>
               </select>
               <p style="color: red" *ngIf="createCustomerForm.controls.customerGender.hasError('required') &&
       createCustomerForm.controls.customerGender.touched">
@@ -115,6 +113,8 @@
               <input class="form-control" formControlName="customerAddress" type="text" name="customerAddress" id="customerAddress" />
               <p style="color: red" *ngIf="createCustomerForm.controls.customerAddress.hasError('required') &&
       createCustomerForm.controls.customerAddress.dirty">
+                Input address, please!
+              </p>
             </td>
           </tr>
           <tr>
@@ -123,6 +123,7 @@
               <input class="btn btn-success" (click)="saveCustomer()"  value="Save"/>
             </td>
           </tr>
+          </tbody>
         </table>
       </form>
     </div>

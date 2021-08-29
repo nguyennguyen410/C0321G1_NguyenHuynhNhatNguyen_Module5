@@ -31,11 +31,11 @@ const routes: Routes = [
     component: CreateCustomerComponent
   },
   {
-    path: 'customerEdit/:customerId',
+    path: 'customerEdit/:id',
     component: EditCustomerComponent
   },
   {
-    path: 'customerDelete/:customerId',
+    path: 'customerDelete/:id',
     component: DeleteCustomerComponent
   },
   {
@@ -63,7 +63,7 @@ const routes: Routes = [
     component: CreateEmployeeComponent
   },
   {
-    path: 'employeeEdit',
+    path: 'employeeEdit/:id',
     component: EditEmployeeComponent
   },
   {
@@ -75,10 +75,11 @@ const routes: Routes = [
     component: CreateServiceComponent
   },
   {
-    path: 'serviceEdit',
+    path: 'serviceEdit/:id',
     component: EditServiceComponent
   },
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

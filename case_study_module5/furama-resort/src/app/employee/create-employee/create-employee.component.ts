@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {EmployeeService} from '../../../service-resort/employee-service/employee.service';
+import {Position} from '../../position';
+import {Division} from '../../division';
+import {EducationDegree} from '../../education-degree';
+import {Employee} from '../../Employee';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-create-employee',
@@ -7,8 +13,15 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./create-employee.component.css']
 })
 export class CreateEmployeeComponent implements OnInit {
+
+  listPosition: Position[] = [];
+  listDivision: Division[] = [];
+  listEducationDegree: EducationDegree[] = [];
+  employee: Employee;
   createEmployeeForm: FormGroup;
-  constructor() {
+
+  constructor(private employeeService: EmployeeService,
+              private route: Router) {
     this.createEmployeeForm = new FormGroup({
       employeeId: new FormControl('', [Validators.required,
         Validators.pattern('^(NV)-[0-9]{4}$')]),
@@ -26,12 +39,21 @@ export class CreateEmployeeComponent implements OnInit {
       division: new FormControl('', Validators.required),
       username: new FormControl('', Validators.required)
     });
+    this.employeeService.getPosition().subscribe(value => this.listPosition = value);
+    this.employeeService.getAllDivision().subscribe(value => this.listDivision = value);
+    this.employeeService.getAllEducation().subscribe(value => this.listEducationDegree = value);
   }
 
   ngOnInit(): void {
   }
 
   getEmployee() {
-    console.log(this.createEmployeeForm.value);
+    this.employee = this.createEmployeeForm.value;
+    console.log(this.employee);
+    this.employeeService.save(this.employee).subscribe(() => {
+      alert('Create Success');
+    });
+    this.createEmployeeForm.reset();
+    this.route.navigateByUrl('employeeList');
   }
 }

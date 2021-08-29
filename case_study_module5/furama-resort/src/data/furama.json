@@ -1,0 +1,263 @@
+{
+  "customerType": [
+    {
+      "id": 1,
+      "name": "silver"
+    },
+    {
+      "id": 2,
+      "name": "gold"
+    },
+    {
+      "id": 3,
+      "name": "platinum"
+    },
+    {
+      "id": 4,
+      "name": "diamond"
+    }
+  ],
+  "genderList": [
+    {
+      "id": 0,
+      "name": "male"
+    },
+    {
+      "id": 1,
+      "name": "female"
+    },
+    {
+      "id": 2,
+      "name": "other"
+    }
+  ],
+  "customerList": [
+    {
+      "id": 1,
+      "customerId": "KH-0001",
+      "customerType": 1,
+      "customerName": "nva",
+      "customerBirthday": "2021/08/08",
+      "customerGender": 1,
+      "customerIdCard": 111111111,
+      "customerPhone": "84-111111111",
+      "customerEmail": "nva@gmail.com",
+      "customerAddress": "DaNang"
+    },
+    {
+      "id": 2,
+      "customerId": "KH-0002",
+      "customerType": 1,
+      "customerName": "nva",
+      "customerBirthday": "2021/08/08",
+      "customerGender": "0",
+      "customerIdCard": 111111111,
+      "customerPhone": "84-111111111",
+      "customerEmail": "nva@gmail.com",
+      "customerAddress": "DaNang"
+    },
+    {
+      "id": 3,
+      "customerId": "KH-0003",
+      "customerType": 1,
+      "customerName": "nva",
+      "customerBirthday": "2021/08/08",
+      "customerGender": "0",
+      "customerIdCard": 111111111,
+      "customerPhone": "84-111111111",
+      "customerEmail": "nva@gmail.com",
+      "customerAddress": "DaNang"
+    },
+    {
+      "id": 4,
+      "customerId": "KH-0003",
+      "customerType": 1,
+      "customerName": "nta",
+      "customerBirthday": "2021/08/08",
+      "customerGender": "0",
+      "customerIdCard": 111111111,
+      "customerPhone": "84-111111111",
+      "customerEmail": "nva@gmail.com",
+      "customerAddress": "DaNang"
+    },
+    {
+      "id": 5,
+      "customerId": "KH-0003",
+      "customerType": 1,
+      "customerName": "nta",
+      "customerBirthday": "2021/08/08",
+      "customerGender": "0",
+      "customerIdCard": 111111111,
+      "customerPhone": "84-111111111",
+      "customerEmail": "nva@gmail.com",
+      "customerAddress": "DaNang"
+    }
+  ],
+  "employeeList": [
+    {
+      "id": 2,
+      "employeeId": "NV-0002",
+      "employeeName": "Tran Van B",
+      "employeeBirthday": "1992/08/23",
+      "employeeIdCard": 222222222,
+      "employeeSalary": 500,
+      "employeePhone": "0935111111",
+      "employeeEmail": "tva@gmail.com",
+      "employeeAddress": "TP.HCM",
+      "position": 2,
+      "educationDegree": 2,
+      "division": 2,
+      "username": "tvb"
+    },
+    {
+      "id": 3,
+      "employeeId": "NV-0003",
+      "employeeName": "Tran Van C",
+      "employeeBirthday": "1992/08/23",
+      "employeeIdCard": 222222222,
+      "employeeSalary": 500,
+      "employeePhone": "0935111111",
+      "employeeEmail": "tva@gmail.com",
+      "employeeAddress": "TP.HCM",
+      "position": 3,
+      "educationDegree": 3,
+      "division": 3,
+      "username": "tvc"
+    },
+    {
+      "employeeId": "NV-0004",
+      "employeeName": "Huynh D",
+      "employeeBirthday": "2021-08-18",
+      "employeeIdCard": "000000004",
+      "employeeSalary": "600",
+      "employeePhone": "0905111114",
+      "employeeEmail": "hd@gmail.com",
+      "employeeAddress": "Da Nang",
+      "position": "4",
+      "educationDegree": "3",
+      "division": "2",
+      "username": "hd",
+      "id": 4
+    }
+  ],
+  "positionList": [
+    {
+      "id": 1,
+      "name": "Lễ tân"
+    },
+    {
+      "id": 2,
+      "name": "Phục vụ"
+    },
+    {
+      "id": 3,
+      "name": "Chuyên viên"
+    },
+    {
+      "id": 4,
+      "name": "Giám sát"
+    },
+    {
+      "id": 5,
+      "name": "Quản lý"
+    },
+    {
+      "id": 6,
+      "name": "Giám đốc"
+    }
+  ],
+  "divisionList": [
+    {
+      "id": 1,
+      "name": "Sale-Marketing"
+    },
+    {
+      "id": 2,
+      "name": "Hành chính"
+    },
+    {
+      "id": 3,
+      "name": "Phục vụ"
+    },
+    {
+      "id": 4,
+      "name": "Quản lý"
+    }
+  ],
+  "educationDegreeList": [
+    {
+      "id": 1,
+      "name": "Trung cấp"
+    },
+    {
+      "id": 2,
+      "name": "Cao đẳng"
+    },
+    {
+      "id": 3,
+      "name": "Đại học"
+    },
+    {
+      "id": 4,
+      "name": "Sau đại học"
+    }
+  ],
+  "serviceList": [
+    {
+      "id": 1,
+      "serviceId": "DV-0001",
+      "serviceName": "Villa",
+      "serviceArea": 150,
+      "serviceCost": 300,
+      "serviceMaxPeople": 10,
+      "rentType": 1,
+      "serviceType": "Villa",
+      "standardRoom": "Vip",
+      "descriptionOtherConvenience": "V-Vip",
+      "poolArea": "70",
+      "numberOfFloor": 2
+    },
+    {
+      "id": 3,
+      "serviceId": "DV-0003",
+      "serviceName": "House",
+      "serviceArea": 150,
+      "serviceCost": 10000,
+      "serviceMaxPeople": 10,
+      "rentType": "2",
+      "serviceType": "House",
+      "standardRoom": "Vip",
+      "descriptionOtherConvenience": "V-Vip",
+      "poolArea": 50,
+      "numberOfFloor": 2
+    },
+    {
+      "serviceId": "DV-0004",
+      "serviceName": "House1",
+      "serviceArea": "150",
+      "serviceCost": "250",
+      "serviceMaxPeople": "10",
+      "rentType": "1",
+      "serviceType": "House",
+      "standardRoom": "Vip",
+      "descriptionOtherConvenience": "V-Vip",
+      "poolArea": "30",
+      "numberOfFloor": "2",
+      "id": 4
+    }
+  ],
+  "rentTypeList": [
+    {
+      "id": 1,
+      "name": "Ngay"
+    },
+    {
+      "id": 2,
+      "name": "Thang"
+    },
+    {
+      "id": 3,
+      "name": "Nam"
+    }
+  ]
+}

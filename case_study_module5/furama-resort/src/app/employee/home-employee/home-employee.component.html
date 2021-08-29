@@ -3,6 +3,10 @@
   <div class="col-md-12">
     <div align="center">
       <caption><h2>List of Employee</h2></caption>
+      <div>
+        <input [(ngModel)]="searchName" class="form-control mr-sm-2" type="search" style="width: 500px" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" (click)="search()">Search</button>
+      </div>
       <div class="mb-2">
         <a class="btn btn-primary d-inline-block mb-2" [routerLink]="'/employeeCreate'"
            style="color: lightcyan; float: left; margin-top: 10px">Create Employee</a>
@@ -20,9 +24,9 @@
           <th>Employee Phone</th>
           <th>Employee Email</th>-->
           <th>Employee Address</th>
-          <th>Employee Position</th>
+          <!--<th>Employee Position</th>-->
           <!--<th>Employee EducationDegree</th>-->
-          <th>Employee Division</th>
+          <!--<th>Employee Division</th>-->
           <!--<th>Employee Username</th>-->
           <th colspan="2" style="text-align: center">Action</th>
           <!--<th sec:authorize="hasRole('ADMIN')">delete</th>-->
@@ -36,16 +40,13 @@
             <td>{{employee.employeeBirthday}}</td>
             <td>{{employee.employeeIdCard}}</td>
             <td>{{employee.employeeAddress}}</td>
-            <td>{{employee.position}}</td>
-            <td>{{employee.division}}</td>
+            <!--<td>{{employee.position}}</td>
+            <td>{{employee.division}}</td>-->
             <td>
-              <a class="btn btn-warning" [routerLink]="'/employeeEdit'">Edit</a>
+              <a class="btn btn-warning" [routerLink]="['/employeeEdit', employee.id]">Edit</a>
             </td>
             <td>
-              <button type="button" class="deleteButton btn btn-danger" data-toggle="modal"
-                      data-target="#deleteModal">
-                Delete
-              </button>
+              <a class="btn btn-danger" (click)="deleteEmployee(employee.id, employee.employeeName)">Delete</a>
             </td>
             <!--<td><a th:href="@{/blog/view/__${blog.id}__ }">View</a></td>-->
           </tr>

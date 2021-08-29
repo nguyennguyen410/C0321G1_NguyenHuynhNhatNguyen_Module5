@@ -1,51 +1,59 @@
 import { Injectable } from '@angular/core';
+import {Customer} from '../../app/Customer';
+import {Employee} from '../../app/Employee';
+import {Position} from '../../app/position';
+import {Division} from '../../app/division';
+import {EducationDegree} from '../../app/education-degree';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeeService {
+  listEmployees: Employee[] = [];
 
-  constructor() { }
-  listEmployee  = [
-    { employeeId: "E-0001",
-      employeeName: "Tran Van A",
-      employeeBirthday: "1992/08/23",
-      employeeIdCard: 222222222,
-      employeeSalary: 500,
-      employeePhone: "0935111111",
-      employeeEmail: "tva@gmail.com",
-      employeeAddress: "TP.HCM",
-      position: "Phuc vu",
-      educationDegree: "Cao Dang",
-      division: "Quan ly",
-      username: "tva"},
-    {employeeId: "E-0002",
-      employeeName: "Tran Van B",
-      employeeBirthday: "1992/08/23",
-      employeeIdCard: 222222222,
-      employeeSalary: 500,
-      employeePhone: "0935111111",
-      employeeEmail: "tva@gmail.com",
-      employeeAddress: "TP.HCM",
-      position: "Phuc vu",
-      educationDegree: "Cao Dang",
-      division: "Quan ly",
-      username: "tvb"},
-    {employeeId: "E-0003",
-      employeeName: "Tran Van C",
-      employeeBirthday: "1992/08/23",
-      employeeIdCard: 222222222,
-      employeeSalary: 500,
-      employeePhone: "0935111111",
-      employeeEmail: "tva@gmail.com",
-      employeeAddress: "TP.HCM",
-      position: "Ke toan",
-      educationDegree: "Cao Dang",
-      division: "Quan ly",
-      username: "tvc"}
-  ];
+  private API_URL_EMPLOYEE = "http://localhost:3000/employeeList";
+  private API_URL_POSITION = "http://localhost:3000/positionList";
+  private API_URL_DIVISION = "http://localhost:3000/divisionList";
+  private API_URL_EDUCATIONDEGREE = "http://localhost:3000/educationDegreeList";
+
+  constructor(private httpClient: HttpClient) { }
+
 
   getAll() {
-    return this.listEmployee;
+    return this.httpClient.get<Employee[]>(this.API_URL_EMPLOYEE);
+  }
+
+  getPosition() {
+    return this.httpClient.get<Position[]>(this.API_URL_POSITION);
+  }
+
+  getAllDivision() {
+    return this.httpClient.get<Division[]>(this.API_URL_DIVISION);
+  }
+
+  getAllEducation() {
+    return this.httpClient.get<EducationDegree[]>(this.API_URL_EDUCATIONDEGREE);
+  }
+
+  save(employee){
+    return this.httpClient.post<Employee>(this.API_URL_EMPLOYEE, employee);
+  }
+
+  editEmployee(id: number, employee: Employee) {
+    return this.httpClient.patch<Employee>(this.API_URL_EMPLOYEE + '/' + id, employee);
+  }
+
+  findById(id: number):Observable<Employee> {
+    return this.httpClient.get<Employee>(this.API_URL_EMPLOYEE + '/' + id);
+  }
+
+  deleteEmployee(id: number) {
+    return this.httpClient.delete<Employee>(this.API_URL_EMPLOYEE + '/' + id);
+  }
+
+  searchEmployee(name: string){
+    return this.httpClient.get<Employee[]>(this.API_URL_EMPLOYEE + '?employeeName_like=' + name);
   }
 }

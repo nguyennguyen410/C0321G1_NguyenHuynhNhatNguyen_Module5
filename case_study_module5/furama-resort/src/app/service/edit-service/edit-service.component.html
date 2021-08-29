@@ -5,87 +5,144 @@
       <caption>
         <h2>Edit Service</h2>
       </caption>
-      <form class="form font-weight-normal w-50" method="post">
+      <form class="form font-weight-normal w-50" [formGroup]="editServiceForm">
         <table class="table" cellpadding="5">
-
+          <thead></thead>
+          <tbody>
           <tr>
             <th>Service Id:</th>
             <td>
-              <input class="form-control" type="text"/>
+              <input class="form-control" formControlName="serviceId" type="text"/>
+              <p style="color: red" *ngIf="editServiceForm.controls.serviceId.hasError('required') &&
+      editServiceForm.controls.serviceId.dirty">
+                Input customerId, please!
+              </p>
+              <p style="color: red" *ngIf="editServiceForm.controls.serviceId.hasError('pattern')">
+                serviceId is like DV-XXXX (X: 0-9)!!!
+              </p>
             </td>
+
           </tr>
           <tr>
             <th>Service Name:</th>
             <td>
-              <input class="form-control" type="text"/>
+              <input class="form-control" formControlName="serviceName" type="text"/>
+              <p style="color: red" *ngIf="editServiceForm.controls.serviceName.hasError('required') &&
+      editServiceForm.controls.serviceName.dirty">
+                Input serviceName, please!
+              </p>
             </td>
+
           </tr>
           <tr>
             <th>Service Area:</th>
             <td>
-              <input class="form-control" type="text"/>
+              <input class="form-control" formControlName="serviceArea" type="text"/>
+              <p style="color: red" *ngIf="editServiceForm.controls.serviceArea.hasError('min') &&
+      editServiceForm.controls.serviceArea.dirty">
+                Input serviceArea > 0, please!
+              </p>
             </td>
+
           </tr>
           <tr>
             <th>Service Cost:</th>
             <td>
-              <input class="form-control" type="text"/>
+              <input class="form-control" formControlName="serviceCost" type="text"/>
+              <p style="color: red" *ngIf="editServiceForm.controls.serviceCost.hasError('min') &&
+      editServiceForm.controls.serviceCost.dirty">
+                Input serviceCost > 0, please!
+              </p>
             </td>
+
           </tr>
           <tr>
             <th>Service Max People:</th>
             <td>
-              <input class="form-control" type="text"/>
+              <input class="form-control" formControlName="serviceMaxPeople" type="text"/>
+              <p style="color: red" *ngIf="editServiceForm.controls.serviceMaxPeople.hasError('min') &&
+      editServiceForm.controls.serviceMaxPeople.dirty">
+                Input serviceMaxPeople > 0, please!
+              </p>
             </td>
+
           </tr>
           <tr>
             <th>Rent Type:</th>
             <td>
-              <select class="form-control" style="width: 300px" >
-                <option></option>
+              <select class="form-control" formControlName="rentType"  style="width: 300px" >
+                <option *ngFor="let i of listRentType" value="{{i.id}}">{{i.name}}</option>
               </select>
+              <p style="color: red" *ngIf="editServiceForm.controls.rentType.hasError('required') &&
+      editServiceForm.controls.rentType.touched">
+                Choose rentType, please!
+              </p>
             </td>
           </tr>
           <tr>
             <th>Service Type:</th>
             <td>
-              <select class="form-control" style="width: 300px">
-                <option></option>
+              <select class="form-control" formControlName="serviceType" style="width: 300px">
+                <option>Villa</option>
+                <option>House</option>
+                <option>Room</option>
               </select>
+              <p style="color: red" *ngIf="editServiceForm.controls.serviceType.hasError('required') &&
+      editServiceForm.controls.serviceType.touched">
+                Choose serviceType, please!
+              </p>
             </td>
           </tr>
           <tr>
             <th>Standard Room:</th>
             <td>
-              <input class="form-control" type="text" name="customerIdCard" id="customerIdCard"/>
+              <input class="form-control" formControlName="standardRoom" type="text"/>
+              <p style="color: red" *ngIf="editServiceForm.controls.standardRoom.hasError('required') &&
+      editServiceForm.controls.standardRoom.dirty">
+                Input standardRoom, please!
+              </p>
             </td>
+
           </tr>
           <tr>
             <th>Description Other Convenience:</th>
             <td>
-              <input class="form-control" type="text" name="customerPhone"
-                     id="customerPhone"/>
+              <input class="form-control" formControlName="descriptionOtherConvenience" type="text"/>
+              <p style="color: red" *ngIf="editServiceForm.controls.descriptionOtherConvenience.hasError('required') &&
+      editServiceForm.controls.descriptionOtherConvenience.dirty">
+                Input descriptionOtherConvenience, please!
+              </p>
             </td>
+
           </tr>
           <tr>
             <th>Pool Area:</th>
             <td>
-              <input class="form-control" type="text"/>
+              <input class="form-control" formControlName="poolArea" type="text"/>
+              <p style="color: red" *ngIf="editServiceForm.controls.poolArea.hasError('min') &&
+      editServiceForm.controls.poolArea.dirty">
+                Input poolArea > 0, please!
+              </p>
             </td>
+
           </tr>
           <tr>
             <th>Number Of Floor:</th>
             <td>
-              <input class="form-control" type="text" size="45"/>
-
+              <input class="form-control" formControlName="numberOfFloor" type="text" size="45"/>
+              <p style="color: red" *ngIf="editServiceForm.controls.numberOfFloor.hasError('min') &&
+      editServiceForm.controls.numberOfFloor.dirty">
+                Input numberOfFloor > 0, please!
+              </p>
             </td>
           </tr>
           <tr>
             <td></td>
             <td colspan="2">
-              <input class="btn btn-success" type="submit" value="Save"/>
+              <input class="btn btn-success" (click)="getService()" value="Save"/>
             </td>
           </tr>
+          </tbody>
         </table>
       </form>
     </div>

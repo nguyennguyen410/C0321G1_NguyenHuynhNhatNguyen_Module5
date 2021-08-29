@@ -5,99 +5,156 @@
       <caption>
         <h2>Edit Employee</h2>
       </caption>
-      <form class="form font-weight-normal w-50" method="post">
+      <form class="form font-weight-normal w-50" [formGroup]="editEmployeeForm">
         <table class="table" cellpadding="5">
+          <thead></thead>
+          <tbody>
           <tr>
             <th>Employee Id:</th>
             <td>
-              <input class="form-control" type="text" name="employeeId" id="employeeId" />
+              <input class="form-control" formControlName="employeeId" type="text" name="employeeId" id="employeeId" />
+              <p style="color: red" *ngIf="editEmployeeForm.controls.employeeId.hasError('required') &&
+      editEmployeeForm.controls.employeeId.dirty">
+                Input employeeId, please!
+              </p>
+              <p style="color: red" *ngIf="editEmployeeForm.controls.employeeId.hasError('pattern')">
+                employeeId is like NV-XXXX (X: 0-9)!!!
+              </p>
 
             </td>
           </tr>
           <tr>
             <th>Employee Name:</th>
             <td>
-              <input class="form-control" type="text" name="employeeName" id="employeeName" />
-
+              <input class="form-control" formControlName="employeeName" type="text" name="employeeName" id="employeeName" />
+              <p style="color: red" *ngIf="editEmployeeForm.controls.employeeName.hasError('required') &&
+      editEmployeeForm.controls.employeeName.dirty">
+                Input employeeName, please!
+              </p>
             </td>
           </tr>
           <tr>
             <th>Employee Birthday:</th>
             <td>
-              <input class="form-control" type="date" name="employeeBirthday" id="employeeBirthday" />
+              <input class="form-control" formControlName="employeeBirthday" type="date" name="employeeBirthday" id="employeeBirthday" />
             </td>
+            <p style="color: red" *ngIf="editEmployeeForm.controls.employeeBirthday.hasError('required') &&
+      editEmployeeForm.controls.employeeBirthday.dirty">
+              Input employeeBirthday, please!
+            </p>
           </tr>
           <tr>
             <th>Employee Id Card:</th>
             <td>
-              <input class="form-control" type="text" name="employeeIdCard" id="employeeIdCard" />
-
+              <input class="form-control" formControlName="employeeIdCard" type="text" name="employeeIdCard" id="employeeIdCard" />
+              <p style="color: red" *ngIf="editEmployeeForm.controls.employeeIdCard.hasError('required') &&
+      editEmployeeForm.controls.employeeIdCard.dirty">
+                Input employeeIdCard, please!
+              </p>
+              <p style="color: red" *ngIf="editEmployeeForm.controls.employeeIdCard.hasError('pattern')">
+                employeeIdCard is like XXXXXXXXX (X: 0-9)!!!
+              </p>
             </td>
           </tr>
           <tr>
             <th>Employee Salary:</th>
             <td>
-              <input class="form-control" type="text" name="employeeSalary" id="employeeSalary" />
-
+              <input class="form-control" formControlName="employeeSalary" type="text" name="employeeSalary" id="employeeSalary" />
+              <p style="color: red" *ngIf="editEmployeeForm.controls.employeeSalary.hasError('required') &&
+      editEmployeeForm.controls.employeeSalary.dirty">
+                Input employeeSalary, please!
+              </p>
             </td>
           </tr>
           <tr>
             <th>Employee Phone:</th>
             <td>
-              <input class="form-control" type="text" name="employeePhone" id="employeePhone" />
-
+              <input class="form-control" formControlName="employeePhone" type="text" name="employeePhone" id="employeePhone" />
+              <p style="color: red" *ngIf="editEmployeeForm.controls.employeePhone.hasError('required') &&
+      editEmployeeForm.controls.employeePhone.dirty">
+                Input employeePhone, please!
+              </p>
+              <p style="color: red" *ngIf="editEmployeeForm.controls.employeeIdCard.hasError('pattern')">
+                employeeIdCard is like 84-XXXXXXXXX (X: 0-9)!!!
+              </p>
             </td>
           </tr>
           <tr>
             <th>Employee Email:</th>
             <td>
-              <input class="form-control" type="text" name="employeeEmail" id="employeeEmail" />
-
+              <input class="form-control" formControlName="employeeEmail" type="text" name="employeeEmail" id="employeeEmail" />
+              <p style="color: red" *ngIf="editEmployeeForm.controls.employeeEmail.hasError('required') &&
+      editEmployeeForm.controls.employeeEmail.dirty">
+                Input employeeEmail, please!
+              </p>
+              <p style="color: red" *ngIf="editEmployeeForm.controls.employeeEmail.hasError('email')">
+                employeeEmail is not valid!!!
+              </p>
             </td>
           </tr>
           <tr>
             <th>Employee Address:</th>
             <td>
-              <input class="form-control" type="text" name="employeeAddress" id="employeeAddress" />
-
+              <input class="form-control" formControlName="employeeAddress" type="text" name="employeeAddress" id="employeeAddress" />
+              <p style="color: red" *ngIf="editEmployeeForm.controls.employeeAddress.hasError('required') &&
+      editEmployeeForm.controls.employeeAddress.dirty">
+                Input employeeAddress, please!
+              </p>
             </td>
           </tr>
           <tr>
             <th>Position:</th>
             <td>
-              <select class="form-control" style="width: 300px">
-                <option></option>
+              <select class="form-control" formControlName="position" style="width: 300px">
+                <option *ngFor="let i of listPosition" value="{{i.id}}">{{i.name}}</option>
               </select>
+              <p style="color: red" *ngIf="editEmployeeForm.controls.position.hasError('required') &&
+      editEmployeeForm.controls.position.touched">
+                Choose position, please!
+              </p>
             </td>
           </tr>
           <tr>
             <th>Education Degree:</th>
             <td>
-              <select class="form-control" style="width: 300px">
-                <option></option>
+              <select class="form-control" formControlName="educationDegree" style="width: 300px">
+                <option *ngFor="let i of listEducationDegree" value="{{i.id}}">{{i.name}}</option>
               </select>
+              <p style="color: red" *ngIf="editEmployeeForm.controls.educationDegree.hasError('required') &&
+      editEmployeeForm.controls.educationDegree.touched">
+                Choose educationDegree, please!
+              </p>
             </td>
           </tr>
           <tr>
             <th>Division:</th>
             <td>
-              <select class="form-control" style="width: 300px">
-                <option></option>
+              <select class="form-control" formControlName="division" style="width: 300px">
+                <option *ngFor="let i of listDivision" value="{{i.id}}">{{i.name}}</option>
               </select>
+              <p style="color: red" *ngIf="editEmployeeForm.controls.division.hasError('required') &&
+      editEmployeeForm.controls.division.touched">
+                Choose division, please!
+              </p>
             </td>
           </tr>
           <tr>
             <th>Username:</th>
             <td>
-              <input class="form-control" type="text"/>
+              <input class="form-control" formControlName="username" type="text"/>
+              <p style="color: red" *ngIf="editEmployeeForm.controls.username.hasError('required') &&
+      editEmployeeForm.controls.username.dirty">
+                Input username, please!
+              </p>
             </td>
           </tr>
           <tr>
             <td></td>
             <td colspan="2">
-              <input class="btn btn-success" type="submit" value="Save"/>
+              <input class="btn btn-success" (click)="editEmployee()" value="Save"/>
             </td>
           </tr>
+          </tbody>
         </table>
       </form>
     </div>

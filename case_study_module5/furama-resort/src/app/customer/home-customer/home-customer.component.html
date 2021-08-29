@@ -3,6 +3,10 @@
   <div class="col-md-12" style="margin: 10px">
     <div align="center">
       <caption><h2>List of Customer</h2></caption>
+      <div>
+      <input [(ngModel)]="searchName" class="form-control mr-sm-2" type="search" style="width: 500px" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" (click)="search()">Search</button>
+      </div>
       <div class="mb-2">
         <a class="btn btn-primary d-inline-block mb-2" [routerLink]="'/customerCreate'"
            style="color: lightcyan; float: left; margin-top: 10px">Create Customer</a>
@@ -34,23 +38,27 @@
               <td>{{i + 1}}</td>
               <td>{{customer.customerId}}</td>
               <td>{{customer.customerName}}</td>
-              <td>{{customer.customerBirthday}}</td>
+              <td *ngIf="customer.customerType==1">Silver</td>
+              <td *ngIf="customer.customerType==2">Gold</td>
+              <td *ngIf="customer.customerType==3">Platinum</td>
+              <td *ngIf="customer.customerType==4">Diamond</td>
               <!--<td th:text="${customer.customerBirthday}"></td>-->
-              <td *ngIf="customer.customerGender == 1">Male</td>
-              <td *ngIf="customer.customerGender == 0">Female</td>
+              <td *ngIf="customer.customerGender == 0">Male</td>
+              <td *ngIf="customer.customerGender == 1">Female</td>
+              <td *ngIf="customer.customerGender == 2">Other</td>
               <td>{{customer.customerIdCard}}</td>
               <!--<td th:text="${customer.customerPhone}"></td>
               <td th:text="${customer.customerEmail}"></td>-->
               <td>{{customer.customerAddress}}</td>
               <td>
-                <a class="btn btn-warning" [routerLink]="['/customerEdit', customer.customerId]">Edit</a>
+                <a class="btn btn-warning" [routerLink]="['/customerEdit', customer.id]">Edit</a>
               </td>
               <td>
                 <!--<button type="button" class="deleteButton btn btn-danger" data-toggle="modal"
                         data-target="#deleteModal">
                   Delete
                 </button>-->
-                <a class="btn btn-danger" [routerLink]="['/customerDelete', customer.customerId]">Delete</a>
+                <a class="btn btn-danger" (click)="deleteCustomer(customer.id, customer.customerName)">Delete</a>
               </td>
               <!--<td><a th:href="@{/blog/view/__${blog.id}__ }">View</a></td>-->
 

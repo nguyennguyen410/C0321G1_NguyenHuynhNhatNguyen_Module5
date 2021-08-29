@@ -7,6 +7,8 @@
       </caption>
       <form class="form font-weight-normal w-50" [formGroup]="createServiceForm">
         <table class="table" cellpadding="5">
+          <thead></thead>
+          <tbody>
           <tr>
             <th>Service Id:</th>
             <td>
@@ -69,10 +71,7 @@
             <th>Rent Type:</th>
             <td>
               <select class="form-control" formControlName="rentType"  style="width: 300px" >
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
+                <option *ngFor="let i of listRentType" value="{{i.id}}">{{i.name}}</option>
               </select>
               <p style="color: red" *ngIf="createServiceForm.controls.rentType.hasError('required') &&
       createServiceForm.controls.rentType.touched">
@@ -84,9 +83,9 @@
             <th>Service Type:</th>
             <td>
               <select class="form-control" formControlName="serviceType" style="width: 300px">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
+                <option>Villa</option>
+                <option>House</option>
+                <option>Room</option>
               </select>
               <p style="color: red" *ngIf="createServiceForm.controls.serviceType.hasError('required') &&
       createServiceForm.controls.serviceType.touched">
@@ -143,6 +142,7 @@
               <input class="btn btn-success" (click)="getService()" value="Save"/>
             </td>
           </tr>
+          </tbody>
         </table>
       </form>
     </div>

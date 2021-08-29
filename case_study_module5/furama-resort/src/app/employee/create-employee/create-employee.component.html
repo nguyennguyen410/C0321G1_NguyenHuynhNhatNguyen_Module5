@@ -7,7 +7,8 @@
       </caption>
       <form class="form font-weight-normal w-50" [formGroup]="createEmployeeForm">
         <table class="table" cellpadding="5">
-
+          <thead></thead>
+          <tbody>
           <tr>
             <th>Employee Id:</th>
             <td>
@@ -105,10 +106,7 @@
             <th>Position:</th>
             <td>
               <select class="form-control" formControlName="position" style="width: 300px">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
+                <option *ngFor="let i of listPosition" value="{{i.id}}">{{i.name}}</option>
               </select>
               <p style="color: red" *ngIf="createEmployeeForm.controls.position.hasError('required') &&
       createEmployeeForm.controls.position.touched">
@@ -120,10 +118,7 @@
             <th>Education Degree:</th>
             <td>
               <select class="form-control" formControlName="educationDegree" style="width: 300px">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
+                <option *ngFor="let i of listEducationDegree" value="{{i.id}}">{{i.name}}</option>
               </select>
               <p style="color: red" *ngIf="createEmployeeForm.controls.educationDegree.hasError('required') &&
       createEmployeeForm.controls.educationDegree.touched">
@@ -135,10 +130,7 @@
             <th>Division:</th>
             <td>
               <select class="form-control" formControlName="division" style="width: 300px">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
+                <option *ngFor="let i of listDivision" value="{{i.id}}">{{i.name}}</option>
               </select>
               <p style="color: red" *ngIf="createEmployeeForm.controls.division.hasError('required') &&
       createEmployeeForm.controls.division.touched">
@@ -162,6 +154,7 @@
               <input class="btn btn-success" (click)="getEmployee()" value="Save"/>
             </td>
           </tr>
+          </tbody>
         </table>
       </form>
     </div>

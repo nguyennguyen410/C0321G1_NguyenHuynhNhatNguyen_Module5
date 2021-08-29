@@ -3,6 +3,9 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {CustomerService} from '../../../service-resort/customer-service/customer.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Customer} from '../../Customer';
+import {Observable} from 'rxjs';
+import {CustomerType} from '../../customer-type';
+import {Gender} from '../../gender';
 
 @Component({
   selector: 'app-edit-customer',
@@ -11,18 +14,15 @@ import {Customer} from '../../Customer';
 })
 export class EditCustomerComponent implements OnInit {
   customer: Customer;
+  customerTypeList: CustomerType[] = [];
+  genderList: Gender[] = [];
+  id: number;
   constructor(private customerService: CustomerService,
               private activatedRoute: ActivatedRoute,
               private router: Router) {
-    const id = this.activatedRoute.snapshot.params.customerId;
-    this.customer = this.customerService.findById(id);
-    console.log(this.customer);
-  }
-  ngOnInit(): void {
-    this.createCustomerForm.setValue(this.customer);
   }
 
-  createCustomerForm = new FormGroup({
+  editCustomerForm = new FormGroup({
     customerId: new FormControl('', [Validators.required,
       Validators.pattern('^KH-[0-9]{4}$')]),
     customerType: new FormControl('', Validators.required),
@@ -37,10 +37,27 @@ export class EditCustomerComponent implements OnInit {
     customerAddress: new FormControl('', Validators.required),
   });
 
+  ngOnInit(): void {
+    this.id = Number(this.activatedRoute.snapshot.params.id);
+    console.log(this.id);
+
+    this.customerService.getAllType().subscribe(value => this.customerTypeList = value);
+    this.customerService.getAllGender().subscribe(value => {this.genderList = value;
+      console.log(this.genderList);});
+
+    this.customerService.findById(this.id).subscribe(value => {
+      this.customer = value;
+      console.log(this.customer);
+      this.editCustomerForm.patchValue(this.customer);
+    });
+
+  }
+
   editCustomer() {
-    const customer = this.createCustomerForm.value;
-    this.customerService.editCustomer(customer);
-    this.createCustomerForm.reset();
-    this.router.navigateByUrl('customerList');
+    const customer = this.editCustomerForm.value;
+    this.customerService.editCustomer(this.id, customer).subscribe(() => {
+      this.editCustomerForm.reset();
+    this.router.navigateByUrl('customerList');});
+
   }
 }

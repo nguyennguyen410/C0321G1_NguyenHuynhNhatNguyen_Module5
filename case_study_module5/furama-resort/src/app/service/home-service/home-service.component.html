@@ -37,13 +37,14 @@
           <td>{{service.poolArea}}</td>
           <td>{{service.numberOfFloor}}</td>
           <td>
-            <a class="btn btn-warning" [routerLink]="'/serviceEdit'">Edit</a>
+            <a class="btn btn-warning" [routerLink]="['/serviceEdit', service.id]">Edit</a>
           </td>
           <td>
-            <button type="button" class="deleteButton btn btn-danger" data-toggle="modal"
+            <a class="btn btn-danger" (click)="deleteService(service.id, service.serviceName)">Delete</a>
+            <!--<button type="button" class="deleteButton btn btn-danger" data-toggle="modal"
                     data-target="#deleteModal">
               Delete
-            </button>
+            </button>-->
           </td>
         </tr>
         </tbody>

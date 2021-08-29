@@ -1,54 +1,43 @@
 import { Injectable } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Employee} from '../../app/Employee';
+import {Position} from '../../app/position';
+import {Service} from '../../app/Service';
+import {RentType} from '../../app/rent-type';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServiceService {
 
-  constructor() { }
-  listService = [
-    {
-      serviceId: "DV-0001",
-      serviceName: "Villa",
-      serviceArea: 150,
-      serviceCost: 300,
-      serviceMaxPeople: 10,
-      rentType: "Date",
-      serviceType: "Villa-1",
-      standardRoom: "Vip",
-      descriptionOtherConvenience: "V-Vip",
-      poolArea: 50,
-      numberOfFloor: 2
-    },
-    {
-      serviceId: "DV-0002",
-      serviceName: "Villa",
-      serviceArea: 150,
-      serviceCost: 300,
-      serviceMaxPeople: 10,
-      rentType: "Date",
-      serviceType: "Villa-2",
-      standardRoom: "Vip",
-      descriptionOtherConvenience: "V-Vip",
-      poolArea: 50,
-      numberOfFloor: 2
-    },
-    {
-      serviceId: "DV-0003",
-      serviceName: "House",
-      serviceArea: 150,
-      serviceCost: 300,
-      serviceMaxPeople: 10,
-      rentType: "Date",
-      serviceType: "House-1",
-      standardRoom: "Vip",
-      descriptionOtherConvenience: "V-Vip",
-      poolArea: 50,
-      numberOfFloor: 2
-    }
-  ];
+  private API_URL_SERVICE = "http://localhost:3000/serviceList";
+  private API_URL_RENTTYPE = "http://localhost:3000/rentTypeList";
+
+  constructor(private httpClient: HttpClient) { }
+
 
   getAll() {
-    return this.listService;
+    return this.httpClient.get<Service[]>(this.API_URL_SERVICE);
+  }
+
+  getAllRentType() {
+    return this.httpClient.get<RentType[]>(this.API_URL_RENTTYPE);
+  }
+
+  save(service){
+    return this.httpClient.post<Service>(this.API_URL_SERVICE, service);
+  }
+
+  editService(id: number, service: Service) {
+    return this.httpClient.patch<Service>(this.API_URL_SERVICE + '/' + id, service);
+  }
+
+  findById(id: number):Observable<Service> {
+    return this.httpClient.get<Service>(this.API_URL_SERVICE + '/' + id);
+  }
+
+  deleteService(id: number) {
+    return this.httpClient.delete<Service>(this.API_URL_SERVICE + '/' + id);
   }
 }

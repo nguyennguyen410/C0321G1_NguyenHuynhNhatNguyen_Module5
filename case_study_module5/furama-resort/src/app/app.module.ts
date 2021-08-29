@@ -20,8 +20,13 @@ import { CreateContractComponent } from './contract/create-contract/create-contr
 import { HomeContractComponent } from './contract/home-contract/home-contract.component';
 import { CreateContractDetailComponent } from './contract/create-contract-detail/create-contract-detail.component';
 import {NgxPaginationModule} from 'ngx-pagination';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { DeleteCustomerComponent } from './customer/delete-customer/delete-customer.component';
+import {HttpClientModule} from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule} from '@angular/material/dialog';
+import { DeleteEmployeeComponent } from './employee/delete-employee/delete-employee.component';
+import { DeleteServiceComponent } from './service/delete-service/delete-service.component';
 
 
 @NgModule({
@@ -43,14 +48,20 @@ import { DeleteCustomerComponent } from './customer/delete-customer/delete-custo
     CreateContractComponent,
     HomeContractComponent,
     CreateContractDetailComponent,
-    DeleteCustomerComponent
+    DeleteCustomerComponent,
+    DeleteEmployeeComponent,
+    DeleteServiceComponent
   ],
-    imports: [
-        NgxPaginationModule,
-        BrowserModule,
-        AppRoutingModule,
-        ReactiveFormsModule
-    ],
+  imports: [
+    NgxPaginationModule,
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
+    FormsModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

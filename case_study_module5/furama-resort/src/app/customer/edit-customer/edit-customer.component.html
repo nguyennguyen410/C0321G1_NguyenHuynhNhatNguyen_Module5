@@ -5,34 +5,43 @@
       <caption>
         <h2>Edit Customer</h2>
       </caption>
-      <form class="form font-weight-normal w-50" [formGroup]="createCustomerForm">
+      <form class="form font-weight-normal w-50" [formGroup]="editCustomerForm">
         <table class="table" cellpadding="5">
 
           <tr>
             <th>Customer Id:</th>
             <td>
               <input class="form-control" formControlName="customerId" type="text" name="customerId" id="customerId" readonly/>
-              <p style="color: red" *ngIf="createCustomerForm.controls.customerId.hasError('required') &&
-      createCustomerForm.controls.customerId.dirty">
+              <p style="color: red" *ngIf="editCustomerForm.controls.customerId.hasError('required') &&
+      editCustomerForm.controls.customerId.dirty">
                 Input customerId, please!
               </p>
-              <p style="color: red" *ngIf="createCustomerForm.controls.customerId.hasError('pattern')">
+              <p style="color: red" *ngIf="editCustomerForm.controls.customerId.hasError('pattern')">
                 CustomerId is like KH-XXXX (X: 0-9)!!!
               </p>
             </td>
           </tr>
           <tr>
-            <th>Customer Type Id:</th>
+            <th>Customer Type:</th>
             <td>
               <select class="form-control" formControlName="customerType" style="width: 300px">
-                <option value="silver">silver</option>
-                <option value="gold">gold</option>
-                <option value="platinum">platinum</option>
-                <option value="diamond">diamond</option>
+                <option *ngFor="let i of customerTypeList" value="{{i.id}}">{{i.name}}</option>
               </select>
-              <p style="color: red" *ngIf="createCustomerForm.controls.customerType.hasError('required') &&
-      createCustomerForm.controls.customerType.touched">
+              <p style="color: red" *ngIf="editCustomerForm.controls.customerType.hasError('required') &&
+      editCustomerForm.controls.customerType.touched">
                 Choose customerType, please!
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <th>Customer Gender:</th>
+            <td>
+              <select class="form-control" formControlName="customerGender" style="width: 300px">
+                <option *ngFor="let i of genderList" value="{{i.id}}">{{i.name}}</option>
+              </select>
+              <p style="color: red" *ngIf="editCustomerForm.controls.customerGender.hasError('required') &&
+      editCustomerForm.controls.customerGender.touched">
+                Input customerGender, please!
               </p>
             </td>
           </tr>
@@ -40,8 +49,8 @@
             <th>Customer Name:</th>
             <td>
               <input class="form-control" formControlName="customerName" type="text" name="customerName" id="customerName" />
-              <p style="color: red" *ngIf="createCustomerForm.controls.customerName.hasError('required') &&
-      createCustomerForm.controls.customerName.dirty">
+              <p style="color: red" *ngIf="editCustomerForm.controls.customerName.hasError('required') &&
+      editCustomerForm.controls.customerName.dirty">
                 Input customerName, please!
               </p>
             </td>
@@ -50,23 +59,9 @@
             <th>Customer Birthday:</th>
             <td>
               <input class="form-control" formControlName="customerBirthday" type="date" name="customerBirthday" id="customerBirthday"/>
-              <p style="color: red" *ngIf="createCustomerForm.controls.customerBirthday.hasError('required') &&
-      createCustomerForm.controls.customerBirthday.dirty">
+              <p style="color: red" *ngIf="editCustomerForm.controls.customerBirthday.hasError('required') &&
+      editCustomerForm.controls.customerBirthday.dirty">
                 Input customerBirthday, please!
-              </p>
-            </td>
-          </tr>
-          <tr>
-            <th>Customer Gender:</th>
-            <td>
-              <select class="form-control" formControlName="customerGender" style="width: 300px">
-                <option>Male</option>
-                <option>Female</option>
-                <option>Other</option>
-              </select>
-              <p style="color: red" *ngIf="createCustomerForm.controls.customerGender.hasError('required') &&
-      createCustomerForm.controls.customerGender.touched">
-                Input customerGender, please!
               </p>
             </td>
           </tr>
@@ -74,11 +69,11 @@
             <th>Customer Id Card:</th>
             <td>
               <input class="form-control" formControlName="customerIdCard" type="text" name="customerIdCard" id="customerIdCard" />
-              <p style="color: red" *ngIf="createCustomerForm.controls.customerIdCard.hasError('required') &&
-      createCustomerForm.controls.customerIdCard.dirty">
+              <p style="color: red" *ngIf="editCustomerForm.controls.customerIdCard.hasError('required') &&
+      editCustomerForm.controls.customerIdCard.dirty">
                 Input Id, please!
               </p>
-              <p style="color: red" *ngIf="createCustomerForm.controls.customerIdCard.hasError('pattern')">
+              <p style="color: red" *ngIf="editCustomerForm.controls.customerIdCard.hasError('pattern')">
                 Id is nine number!
               </p>
             </td>
@@ -87,11 +82,11 @@
             <th>Customer Phone:</th>
             <td>
               <input  class="form-control" formControlName="customerPhone" type="text" name="customerPhone" id="customerPhone" />
-              <p style="color: red" *ngIf="createCustomerForm.controls.customerPhone.hasError('required') &&
-      createCustomerForm.controls.customerPhone.dirty">
+              <p style="color: red" *ngIf="editCustomerForm.controls.customerPhone.hasError('required') &&
+      editCustomerForm.controls.customerPhone.dirty">
                 Input customerPhone, please!
               </p>
-              <p style="color: red" *ngIf="createCustomerForm.controls.customerPhone.hasError('pattern')">
+              <p style="color: red" *ngIf="editCustomerForm.controls.customerPhone.hasError('pattern')">
                 customerPhone is like 84-XXXXXXXXX (X: 0-9)!!!
               </p>
             </td>
@@ -100,11 +95,11 @@
             <th>Customer Email:</th>
             <td>
               <input class="form-control" formControlName="customerEmail" type="text" name="customerEmail" id="customerEmail" />
-              <p style="color: red" *ngIf="createCustomerForm.controls.customerEmail.hasError('required') &&
-      createCustomerForm.controls.customerEmail.dirty">
+              <p style="color: red" *ngIf="editCustomerForm.controls.customerEmail.hasError('required') &&
+      editCustomerForm.controls.customerEmail.dirty">
                 Input customerEmail, please!
               </p>
-              <p style="color: red" *ngIf="createCustomerForm.controls.customerEmail.hasError('pattern')">
+              <p style="color: red" *ngIf="editCustomerForm.controls.customerEmail.hasError('pattern')">
                 customerEmail is not valid!!
               </p>
             </td>
@@ -113,8 +108,8 @@
             <th>Customer Address:</th>
             <td>
               <input class="form-control" formControlName="customerAddress" type="text" name="customerAddress" id="customerAddress" />
-              <p style="color: red" *ngIf="createCustomerForm.controls.customerAddress.hasError('required') &&
-      createCustomerForm.controls.customerAddress.dirty">
+              <p style="color: red" *ngIf="editCustomerForm.controls.customerAddress.hasError('required') &&
+      editCustomerForm.controls.customerAddress.dirty">
             </td>
           </tr>
           <tr>

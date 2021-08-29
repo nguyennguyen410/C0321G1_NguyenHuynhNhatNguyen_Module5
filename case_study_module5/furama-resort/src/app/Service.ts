@@ -1,10 +1,11 @@
 export interface Service {
+  id: number;
   serviceId: string;
   serviceName: string;
   serviceArea: number;
   serviceCost: number;
   serviceMaxPeople: number;
-  rentType: string;
+  rentType: number;
   serviceType: string;
   standardRoom: string;
   descriptionOtherConvenience: string;

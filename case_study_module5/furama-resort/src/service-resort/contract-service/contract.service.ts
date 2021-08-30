@@ -1,50 +1,30 @@
 import { Injectable } from '@angular/core';
 import {Contract} from '../../app/Contract';
+import {Customer} from '../../app/Customer';
+import {CustomerType} from '../../app/customer-type';
+import {Gender} from '../../app/gender';
+import {Service} from '../../app/Service';
+import {Employee} from '../../app/Employee';
+import {CustomerService} from '../customer-service/customer.service';
+import {EmployeeService} from '../employee-service/employee.service';
+import {ServiceService} from '../service-service/service.service';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ContractService {
+  listContracts: Contract[] = [];
+  private API_URL_CONTRACT = "http://localhost:3000/contractList";
+  constructor(private httpClient: HttpClient) {
 
-  constructor() { }
-
-  listContract: Contract[] = [
-    {
-      contractId: "HD-0001",
-      contractStartDate: "2021/08/23",
-      contractEndDate: "2021/08/25",
-      contractDeposit: 100,
-      contractTotalMoney: 500,
-      employee: "Tran Van A",
-      customer: "Nguyen Van A",
-      service: "DV-0001",
-      contractDetails: "None",
-    },
-    {
-      contractId: "HD-0002",
-      contractStartDate: "2021/08/23",
-      contractEndDate: "2021/08/25",
-      contractDeposit: 100,
-      contractTotalMoney: 500,
-      employee: "Tran Van A",
-      customer: "Nguyen Van A",
-      service: "DV-0002",
-      contractDetails: "None",
-    },
-    {
-      contractId: "HD-0003",
-      contractStartDate: "2021/08/23",
-      contractEndDate: "2021/08/25",
-      contractDeposit: 100,
-      contractTotalMoney: 500,
-      employee: "Tran Van A",
-      customer: "Nguyen Van A",
-      service: "DV-0002",
-      contractDetails: "None",
-    }
-  ];
+  }
 
   getAll() {
-    return this.listContract;
+    return this.httpClient.get<Contract[]>(this.API_URL_CONTRACT);
+  }
+
+  save(contract){
+    return this.httpClient.post<Contract>(this.API_URL_CONTRACT, contract);
   }
 }

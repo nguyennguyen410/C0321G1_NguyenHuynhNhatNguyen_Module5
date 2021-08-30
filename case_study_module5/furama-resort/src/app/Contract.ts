@@ -1,11 +1,14 @@
 export interface Contract {
-contractId: string;
-contractStartDate: string;
-contractEndDate: string;
-contractDeposit: number;
-contractTotalMoney: number;
-employee: string;
-customer: string;
-service: string;
-contractDetails: string;
+  id: number;
+  contractId: string;
+  dateContract: {
+    contractStartDate: string;
+    contractEndDate: string;
+  }
+  contractDeposit: number;
+  contractTotalMoney: number;
+  employee: number;
+  customer: number;
+  service: number;
+  contractDetails: number;
 }

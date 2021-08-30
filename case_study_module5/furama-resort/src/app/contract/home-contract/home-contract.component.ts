@@ -1,6 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {Contract} from '../../Contract';
 import {ContractService} from '../../../service-resort/contract-service/contract.service';
+import {CustomerService} from '../../../service-resort/customer-service/customer.service';
+import {EmployeeService} from '../../../service-resort/employee-service/employee.service';
+import {ServiceService} from '../../../service-resort/service-service/service.service';
+import {Customer} from '../../Customer';
+import {Service} from '../../Service';
+import {Employee} from '../../Employee';
 
 @Component({
   selector: 'app-home-contract',
@@ -9,8 +15,19 @@ import {ContractService} from '../../../service-resort/contract-service/contract
 })
 export class HomeContractComponent implements OnInit {
   p = 1;
-  listContract: Contract[] = [];
-  constructor(private contractService: ContractService) {
+  listCustomers: Customer[] = [];
+  listServices: Service[] = [];
+  listEmployees: Employee[] = [];
+  listContracts: Contract[] = [];
+
+  constructor(private contractService: ContractService,
+              private customerService: CustomerService,
+              private employeeService: EmployeeService,
+              private serviceService: ServiceService) {
+    this.customerService.getAll().subscribe(value => this.listCustomers = value);
+    this.serviceService.getAll().subscribe(value => this.listServices = value);
+    this.employeeService.getAll().subscribe(value => this.listEmployees = value);
+
   }
 
   ngOnInit(): void {
@@ -18,6 +35,6 @@ export class HomeContractComponent implements OnInit {
   }
 
   private getAll() {
-    this.listContract = this.contractService.getAll();
+    this.contractService.getAll().subscribe(value => this.listContracts = value);
   }
 }

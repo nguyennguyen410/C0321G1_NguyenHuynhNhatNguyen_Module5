@@ -27,6 +27,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule} from '@angular/material/dialog';
 import { DeleteEmployeeComponent } from './employee/delete-employee/delete-employee.component';
 import { DeleteServiceComponent } from './service/delete-service/delete-service.component';
+import {Ng2SearchPipeModule} from 'ng2-search-filter';
 
 
 @NgModule({
@@ -60,7 +61,8 @@ import { DeleteServiceComponent } from './service/delete-service/delete-service.
     HttpClientModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    FormsModule
+    FormsModule,
+    Ng2SearchPipeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

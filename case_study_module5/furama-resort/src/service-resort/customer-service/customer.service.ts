@@ -54,4 +54,7 @@ export class CustomerService {
   searchCustomer(name: string){
     return this.httpClient.get<Customer[]>(this.API_URL + '?customerName_like=' + name);
   }
+  sortId(){
+    return this.httpClient.get<Customer[]>(this.API_URL + '?_sort=customerId&_order=desc');
+  }
 }

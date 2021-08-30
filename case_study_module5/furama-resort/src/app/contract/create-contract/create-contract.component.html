@@ -1,4 +1,3 @@
-
 <div>
   <div class="col-md-12">
     <div align="center">
@@ -7,10 +6,12 @@
       </caption>
       <form class="form font-weight-normal w-50" [formGroup]="createContractForm">
         <table class="table" cellpadding="5">
+          <thead></thead>
+          <tbody>
           <tr>
             <th>Contract Id:</th>
             <td>
-              <input class="form-control" formControlName="contractId" type="text" name="contractId" id="contractId" />
+              <input class="form-control" formControlName="contractId" type="text" name="contractId" id="contractId"/>
               <p style="color: red" *ngIf="createContractForm.controls.contractId.hasError('required') &&
       createContractForm.controls.contractId.dirty">
                 Input contractId, please!
@@ -18,51 +19,65 @@
             </td>
           </tr>
           <div formGroupName="dateContract">
-          <tr>
-            <th>Contract Start Date:</th>
-            <td>
-              <input class="form-control" formControlName="contractStartDate" type="date" name="contractStartDate" id="contractStartDate" />
-            </td>
-            <p style="color: red" *ngIf="createContractForm.controls.dateContract.get('contractStartDate').hasError('required') &&
+
+            <div>
+              <tr>
+                <th>Contract Start Date:</th>
+                <td>
+                  <input class="form-control" formControlName="contractStartDate" type="date" name="contractStartDate"
+                         id="contractStartDate"/>
+                </td>
+                <p style="color: red" *ngIf="createContractForm.controls.dateContract.get('contractStartDate').hasError('required') &&
       createContractForm.controls.dateContract.get('contractStartDate').dirty">
-              Input contractStartDate, please!
-            </p>
-          </tr>
-          <tr>
-            <th>Contract End Date:</th>
-            <td>
-              <input class="form-control" formControlName="contractEndDate" type="date" name="contractEndDate" id="contractEndDate" />
-            </td>
-            <p style="color: red" *ngIf="createContractForm.controls.dateContract.get('contractEndDate').hasError('required') &&
+                  Input contractStartDate, please!
+                </p>
+              </tr>
+            </div>
+            <div>
+              <tr>
+                <th>Contract End Date:</th>
+                <td>
+                  <input class="form-control" formControlName="contractEndDate" type="date" name="contractEndDate"
+                         id="contractEndDate"/>
+                </td>
+                <p style="color: red" *ngIf="createContractForm.controls.dateContract.get('contractEndDate').hasError('required') &&
       createContractForm.controls.dateContract.get('contractEndDate').dirty">
-              Input contractEndDate, please!
-            </p>
-          </tr>
+                  Input contractEndDate, please!
+                </p>
+                <p style="color: red" *ngIf="createContractForm.controls.dateContract.hasError('errorCode')
+&& createContractForm.controls.dateContract.get('contractEndDate').touched">
+                  Not Valid!!!
+                </p>
+              </tr>
+            </div>
           </div>
           <tr>
             <th>Contract Deposit:</th>
             <td>
-              <input class="form-control" formControlName="contractDeposit" type="text" name="contractDeposit" id="contractDeposit" />
+              <input class="form-control" formControlName="contractDeposit" type="text" name="contractDeposit"
+                     id="contractDeposit"/>
             </td>
             <p style="color: red" *ngIf="createContractForm.controls.contractDeposit.hasError('min') &&
       createContractForm.controls.contractDeposit.dirty">
               Input contractDeposit, please!
             </p>
           </tr>
-          <!--<tr>
-              <th>Contract Total Money:</th>
-              <td>
-                  <input class="form-control" type="text" name="contractTotalMoney" id="contractTotalMoney" />
-              </td>
-          </tr>-->
+          <tr>
+            <th>Contract Total Money:</th>
+            <td>
+              <input class="form-control" type="text" formControlName="contractTotalMoney" name="contractTotalMoney"
+                     id="contractTotalMoney"/>
+            </td>
+            <p style="color: red" *ngIf="createContractForm.controls.contractDeposit.hasError('min') &&
+      createContractForm.controls.contractDeposit.dirty">
+              Input contractDeposit, please!
+            </p>
+          </tr>
           <tr>
             <th>Employee:</th>
             <td>
               <select class="form-control" formControlName="employee" style="width: 300px">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
+                <option *ngFor="let i of listEmployees" value="{{i.id}}">{{i.employeeName}}</option>
               </select>
               <p style="color: red" *ngIf="createContractForm.controls.employee.hasError('required') &&
       createContractForm.controls.employee.touched">
@@ -74,10 +89,7 @@
             <th>Customer:</th>
             <td>
               <select class="form-control" formControlName="customer" style="width: 300px">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
+                <option *ngFor="let i of listCustomers" value="{{i.id}}">{{i.customerName}}</option>
               </select>
               <p style="color: red" *ngIf="createContractForm.controls.customer.hasError('required') &&
       createContractForm.controls.customer.touched">
@@ -89,10 +101,7 @@
             <th>Service:</th>
             <td>
               <select class="form-control" formControlName="service" style="width: 300px">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
+                <option *ngFor="let i of listServices" value="{{i.id}}">{{i.serviceName}}</option>
               </select>
               <p style="color: red" *ngIf="createContractForm.controls.service.hasError('required') &&
       createContractForm.controls.service.touched">
@@ -103,9 +112,10 @@
           <tr>
             <td></td>
             <td colspan="2">
-              <input class="btn btn-success" (click)="getContract()"  value="Save"/>
+              <input class="btn btn-success" (click)="getContract()" value="Save"/>
             </td>
           </tr>
+          </tbody>
         </table>
       </form>
     </div>

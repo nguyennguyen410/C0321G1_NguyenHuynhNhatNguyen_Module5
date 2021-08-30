@@ -39,14 +39,22 @@
         </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let contract of listContract | paginate: { itemsPerPage: 2, currentPage: p }, index as i ">
+          <tr *ngFor="let contract of listContracts | paginate: { itemsPerPage: 2, currentPage: p }, index as i ">
             <td>{{i + 1}}</td>
             <td>{{contract.contractId}}</td>
-            <td>{{contract.contractStartDate}}</td>
-            <td>{{contract.contractEndDate}}</td>
+            <td>{{contract.dateContract.contractStartDate}}</td>
+            <td>{{contract.dateContract.contractEndDate}}</td>
             <td>{{contract.contractTotalMoney}}</td>
-            <td>{{contract.customer}}</td>
-            <td>{{contract.service}}</td>
+            <td>
+              <div *ngFor="let i of listCustomers">
+                <span *ngIf="i.id == contract.customer"> {{i.customerName}}</span>
+              </div>
+            </td>
+            <td>
+              <div *ngFor="let i of listServices">
+                <span *ngIf="i.id == contract.service"> {{i.serviceName}}</span>
+              </div>
+            </td>
           </tr>
         </tbody>
       </table>
